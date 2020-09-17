@@ -1,0 +1,19 @@
+/**
+ * @param {string[]} logs
+ * @return {string[]}
+ */
+var reorderLogFiles = function(logs) {
+   var digarr = [];
+var letarr = [];
+
+const removeIdentifier = (log) =>  log.slice(log.indexOf(" ")+1);
+
+for(log of logs) {
+   (/\d/.test(removeIdentifier(log))) ? digarr.push(log) : letarr.push(log);
+}
+compare = (a,b) => {
+  var n = removeIdentifier(a).localeCompare(removeIdentifier(b));
+  return (n === 0) ?  a.localeCompare(b) :  n;
+}
+return [...letarr.sort(compare),...digarr]; 
+};
